@@ -1,8 +1,14 @@
 \documentclass[acmtog]{acmart} 
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
 %\usepackage{lipsum}
 \bibliographystyle{plain}
 \title{Confidential Cloud Services}
 \author{Neele Peter}
+\makeatletter
+\let\@authorsaddresses\@empty
+\makeatother
+\pagestyle{plain}
 \settopmatter{printacmref=false}
 \settopmatter{printfolios=false}
 \begin{document}
@@ -10,16 +16,31 @@
 	
 \maketitle
 
-\tableofcontents
 %Abstract	
 \section{Abstract}	
-	In this paper I am going to compare two confidential cloud services, the Confidential Consortium Framework (CCF) \cite{Howard} and Nimble \cite{Nimble}. They both provide 
-\newpage
+	In this paper I am going to compare two confidential cloud services, the Confidential Consortium Framework (CCF) \cite{Howard} and Nimble \cite{Nimble}. They both provide \\
+
 
 %Introduction
 \section{Introduction}
 	A Confidential Clod Service is an additional service that can be applied on top of an existing cloud provider. 
+	
+\newpage
 
+\section{CCF}	
+\newpage
+
+\section{Nimble}
+\newpage
+
+\section{Comparison}
+\subsection{Rollback Attacks}
+\subsection{Reconfiguration}
+\subsection{Desaster}
+\subsection{Usecase}
+\newpage
+
+\section{Conclusion}
 
 \newpage
 
