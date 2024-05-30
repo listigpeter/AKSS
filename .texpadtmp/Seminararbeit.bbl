@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{Nimble}
+Sebastian Angel, Aditya Basu, Weidong Cui, Trent Jaeger, Stella Lau, Srinath
+  Setty, and Sudheesh Singanamalla.
+\newblock Nimble: Rollback protection for confidential cloud services (extended
+  version).
+\newblock Cryptology ePrint Archive, Paper 2023/761, 2023.
+\newblock \url{https://eprint.iacr.org/2023/761}.
+
+\bibitem{Howard}
+Heidi Howard, Fritz Alder, Edward Ashton, Amaury Chamayou, Sylvan Clebsch,
+  Manuel Costa, Antoine Delignat-Lavaud, Cedric Fournet, Andrew Jeffery,
+  Matthew Kerner, Fotios Kounelis, Markus~A. Kuppe, Julien Maffre, Mark
+  Russinovich, and Christoph~M. Wintersteiger.
+\newblock Confidential consortium framework: Secure multiparty applications
+  with confidentiality, integrity, and high availability, 2023.
+
+\end{thebibliography}
