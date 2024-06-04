@@ -1,4 +1,5 @@
 \documentclass[sigconf]{acmart} 
+\settopmatter{printacmref=false}
 \renewcommand\footnotetextcopyrightpermission[1]{}
 \usepackage{graphicx}
 \bibliographystyle{plain}
@@ -11,7 +12,7 @@
 \makeatletter
 \let\@authorsaddresses\@empty
 \makeatother
-%\pagestyle{plain}
+\pagestyle{empty}
 \settopmatter{printacmref=false}
 \begin{document}
 	
@@ -26,10 +27,11 @@
 \begin{figure}[h]
 	\includegraphics[scale=0.25]{pictures/cia_triad}
 	\caption{Graphic of the CIA triade}
+	\label{cia}
 \end{figure}
 
-	
-\newpage
+\input{background}
+
 
 \input{ccf}
 
@@ -39,7 +41,7 @@
 
 \newpage
 
-\input{comparison}
+\input{relatedwork}
 
 \newpage
 
