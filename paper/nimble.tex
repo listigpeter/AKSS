@@ -1,6 +1,12 @@
 \section{Comparison with Nimble}
-Another example for such a service is Nimble \cite{Nimble}. It also tries to ensure the requirement of the CIA triad, but has the focus of preventing rollback attacks. 
+Nimble \cite{Nimble} also tries to ensure the requirement of the CIA triad, but has the focus of preventing rollback attacks. In the following section the functions of Nimble are introduced and important components are compared with the ones of CCF.
 \subsection{Idea}
+The idea of Nimble is to also have reconfigurations and a small Trusted Execution Base (TCB) at the same time. Therefore the authors differ between two main properties:
+	\begin{itemize}
+		\item \textbf{Safety} means that it must be ensured that every data that can be accessed must be the current data and must not be an older version. This property is enabled via TEEs. (In the CIA triad this would be Confidentiality and Integrity)
+		\item \textbf{Liveness} is the High Availability property of the CIA triad. This has not to be ensured via a TEE, because liveness can be easily taken away even in an TEE, and can be handled outside what simultaneously makes the TCB smaller.
+	\end{itemize}
+\subsection{Rollback Attacks}
 \subsection{Confidentiality}
 \subsection{Reconfiguration}
 \subsection{Desaster Protocol}

@@ -7,10 +7,12 @@ The basic idea of CCF is that an untrusted host exists and one or more untrusted
 	\caption{Each node consists of a TEE, the untrusted host, and an interface between the host and the TEE. The TEE consists of a Key-value store, the Consensus, the Transaction Handler and the specific Application logic.The storage and the network are placed outside the TEE.}
 	\label{ccf}
 \end{figure}
-\subsection{Confidentiality}
 \subsection{Reconfiguration}
-Reconfiguration is the procedure when a node fails and is replaced by a new one. CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction.
+%TODO graphic of node states and transactions
+Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee the high availability. CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For Reconfiguration a node must request an election and win it. The election is done by a majority quorum. 
 \subsection{Desaster Protocol}
-\subsection{TCB}
+\subsection{Confidentiality}
+\subsection{Rollback Attacks}
 \subsection{Challenges}
-As mentioned before CCF does not have a rollback detection, because it allows rollback attacks to happen, because it is not affecting the system. The problems are that they (1) make the assumption that the code inside the TEE cannot be changed and (2) that thy put their persistent storage outside the TEEs and is therefore not protected for a rollback attack.
+As mentioned before CCF does not have a rollback detection, because it allows rollback attacks to happen, because it is not affecting the system. The problems are that they (1) make the assumption that the code inside the TEE cannot be changed and (2) that thy put their persistent storage outside the TEEs and is therefore not protected for a rollback attack.\\
+Solutions for these challenges already exist. In the following section I introduce another existing confidential cloud service that especially focuses on detecting and protecting rollback attack. 
