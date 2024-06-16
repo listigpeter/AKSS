@@ -96,7 +96,6 @@
   title     = {No Forking Way: Detecting Cloning Attacks on Intel SGX Applications},
   year      = {2023},
   address   = {New York, NY, USA},
-  pages     = {744–758},
   publisher = {Association for Computing Machinery},
   series    = {ACSAC '23},
   abstract  = {Forking attacks against TEEs like Intel SGX can be carried out either by rolling back the application to a previous state, or by cloning the application and by partitioning its inputs across the cloned instances. Current solutions to forking attacks require Trusted Third Parties (TTP) that are hard to find in real-world deployments. In the absence of a TTP, many TEE applications rely on monotonic counters to mitigate forking attacks based on rollbacks; however, they have no protection mechanism against forking attack based on cloning. In this paper, we analyze 72 SGX applications and show that approximately 20\% of those are vulnerable to forking attacks based on cloning—including those that rely on monotonic counters. To address this problem, we present CloneBuster, the first practical clone-detection mechanism for Intel SGX that does not rely on a TTP and, as such, can be used directly to protect existing applications. CloneBuster allows enclaves to (self-) detect whether another enclave with the same binary is running on the same platform. To do so, CloneBuster relies on a cache-based covert channel for enclaves to signal their presence to (and detect the presence of) clones on the same machine. We show that CloneBuster is robust despite a malicious OS, only incurs a marginal impact on the application performance, and adds approximately 800 LoC to the TCB. When used in conjunction with monotonic counters, CloneBuster allows applications to benefit from a comprehensive protection against forking attacks.},
@@ -115,6 +114,38 @@
   year         = {2018},
   organization = {Springer},
   pages        = {93--109},
+}
+
+@Article{remoteAttestation,
+  author     = {Alexander Sprog{\o} Banks and Marek Kisiel and Philip Korsholm},
+  journal    = {CoRR},
+  title      = {Remote Attestation: {A} Literature Review},
+  year       = {2021},
+  volume     = {abs/2105.02466},
+  bibsource  = {dblp computer science bibliography, https://dblp.org},
+  biburl     = {https://dblp.org/rec/journals/corr/abs-2105-02466.bib},
+  eprint     = {2105.02466},
+  eprinttype = {arXiv},
+  timestamp  = {Wed, 12 May 2021 15:54:31 +0200},
+  url        = {https://arxiv.org/abs/2105.02466},
+}
+
+@Misc{sgx,
+  author       = {Victor Costan and Srinivas Devadas},
+  howpublished = {Cryptology ePrint Archive, Paper 2016/086},
+  note         = {\url{https://eprint.iacr.org/2016/086}},
+  title        = {Intel {SGX} Explained},
+  year         = {2016},
+  url          = {https://eprint.iacr.org/2016/086},
+}
+
+@Article{amd,
+  author  = {Sev-Snp, AMD},
+  journal = {White Paper, January},
+  title   = {Strengthening VM isolation with integrity protection and more},
+  year    = {2020},
+  pages   = {1450--1465},
+  volume  = {53},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

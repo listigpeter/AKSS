@@ -1,14 +1,13 @@
-\section{Comparison with Nimble}
-Nimble \cite{Nimble} also tries to ensure the requirement of the CIA triad, but has the focus of preventing rollback attacks. In the following section the functions of Nimble are introduced and important components are compared with the ones of CCF.
-\subsection{Idea}
-The idea of Nimble is to also have reconfigurations and a small Trusted Execution Base (TCB) at the same time. Therefore the authors differ between two main properties:
-	\begin{itemize}
-		\item \textbf{Safety} means that it must be ensured that every data that can be accessed must be the current data and must not be an older version. This property is enabled via TEEs. (In the CIA triad this would be Confidentiality and Integrity)
-		\item \textbf{Liveness} is the High Availability property of the CIA triad. This has not to be ensured via a TEE, because liveness can be easily taken away even in an TEE, and can be handled outside what simultaneously makes the TCB smaller.
-	\end{itemize}
+\section{Rollback Protection}
+
 \subsection{Rollback Attacks}
-\subsection{Confidentiality}
+To protect rollback attacks they firstly must be detected. Therefore the paper presents three categories that all detect a rollback attack:
+		\begin{itemize}
+			\item \textbf{Addressing stale responses:} Stale responses happen when old data is given by the host although there is already newer data. Therefore Nimble uses an linearizable append-only ledger. Linearizability is a criteria that provides strong consistency. 
+			\item \textbf{Addressing synthesized requests:} Synthesized requests means that the provider sends requests that are not sent by the application and stores them. This is handled via signing. The application signs the state and then appends it on the ledger. When the application reads a state from the ledger it then can recognize whether it is a real state with a signature or a synthesized request from a malicious provider.
+			\item \textbf{Addressing replay:} When a provider applies older requests to the storage this is called replay. Therefore the position of the stored state in the data is also stored with a signature. So the application can check, if this signed position matches with the position it is stored in the ledger.
+		\end{itemize}
 \subsection{Reconfiguration}
+\label{reconNimble}
 \subsection{Desaster Protocol}
 \subsection{TCB}
-\subsection{Challenges}
