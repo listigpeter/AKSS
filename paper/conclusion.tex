@@ -1,1 +1,4 @@
 \section{Challenges}
+\label{challenges:ccf}
+As mentioned before CCF does not have a rollback detection, because it allows rollback attacks to happen, because it is not affecting the system. The problems are that they (1) make the assumption that the code inside the TEE cannot be changed and (2) that they put their ledger into the persistent storage outside the TEEs and  it is therefore not protected for a rollback attack.\\
+Solutions for these challenges exist in Nimble. 

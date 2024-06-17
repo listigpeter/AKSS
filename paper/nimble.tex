@@ -1,13 +1,17 @@
 \section{Rollback Protection}
 
-\subsection{Rollback Attacks}
-To protect rollback attacks they firstly must be detected. Therefore the paper presents three categories that all detect a rollback attack:
-		\begin{itemize}
-			\item \textbf{Addressing stale responses:} Stale responses happen when old data is given by the host although there is already newer data. Therefore Nimble uses an linearizable append-only ledger. Linearizability is a criteria that provides strong consistency. 
-			\item \textbf{Addressing synthesized requests:} Synthesized requests means that the provider sends requests that are not sent by the application and stores them. This is handled via signing. The application signs the state and then appends it on the ledger. When the application reads a state from the ledger it then can recognize whether it is a real state with a signature or a synthesized request from a malicious provider.
-			\item \textbf{Addressing replay:} When a provider applies older requests to the storage this is called replay. Therefore the position of the stored state in the data is also stored with a signature. So the application can check, if this signed position matches with the position it is stored in the ledger.
-		\end{itemize}
+To protect rollback attacks they firstly must be detected. Therefore Nimble presents three categories that all detect a rollback attack:
+\begin{itemize}
+	\item \textbf{Addressing stale responses:} Stale responses happen when old data is given by the host although there is already newer data. Therefore Nimble uses an linearizable append-only ledger. Linearizability is a criteria that provides strong consistency. 
+	\item \textbf{Addressing synthesized requests:} Synthesized requests means that the provider sends requests that are not sent by the application and stores them. This is handled via signing. The application signs the state and then appends it on the ledger. When the application reads a state from the ledger it then can recognize whether it is a real state with a signature or a synthesized request from a malicious provider.
+	\item \textbf{Addressing replay:} When a provider applies older requests to the storage this is called replay. Therefore the position of the stored state in the ledger is also stored with a signature. So the application can check, if this signed position matches with the position it is currently stored in the ledger.
+\end{itemize}
+
+\section{Discussion}
+In this section two other components of CCF and Nimble are discussed. At first, reconfiguration is described, then I will talk about the disaster recovery protocol of both services.
 \subsection{Reconfiguration}
 \label{reconNimble}
-\subsection{Desaster Protocol}
-\subsection{TCB}
+%TODO graphic of node states and transactions
+Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee the high availability. CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For Reconfiguration a node must request an election and win it. The election is done by a majority quorum. 
+\subsection{Desaster Recovery Protocol}
+%\subsection{TCB}
