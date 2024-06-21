@@ -1,15 +1,15 @@
-\section{Confidetnial Services}
+\section{Confidential Services}
 In this section I present two Confidential Cloud Services. The first one is the Confidential Consortium Framework (CCF)~\cite{Howard} and the second one is Nimble~\cite{Nimble}. They both provide a structure to guarantee the CIA properties, but have some differences in their design, especially when it comes to rollback attacks. Nimble is specialized in detecting rollback attacks while CCF is a whole framework that can also be used for multiparty applications.
-\subsection{CCF}
+\subsection{CCF in a nutshell}
 The basic idea of CCF is that an untrusted host exists and one or more untrusted users can access different replicated nodes that are responsible for the remaining communication. One of these nodes is the primary. Users can connect to any node and the specific request is either being forwarded to the primary or handled by the node itself. Operations that do not have the obligation to be handled in the primary are read-only requests. If this node fails the user can be connected to another node, if the primary fails there is a primary election that selects a new primary with certain voting criteria. The primary also periodically sends signature transactions. These are transactions that confirm that there were no malicious changes to the code and thus guarantee the integrity of CCF. Transactions (i.e. user requests) are provided via a merkle tree, where each transaction is a hash value. Every two nodes in the merkle tree are combined with a hash function to a new node. On top of the merkle tree is the merkle root, which is the value that is used for the signature transaction. %maybe figure
  Providers only need to implement the application logic and make sure to have all necessary endpoints, so that CCF can handle these. Users then only have to access the specific endpoints to use the application.  In Figure~\ref{ccf} the structure of one node is described. The application logic gets the data from the Key-value-store which gets the data from the Consensus. %TODO: what is the Consensus
-  The Transaction Handler stores every signature transaction in an append-only ledger that is redundant in every other node and the persistent storage. Performing the application logic inside a TEE is fundamental for the confidentiality and the integrity, replicating the transactions is necessary for the high availability. The ledger is stored outside the TEE what leads to certain problems that are discussed in~\ref{challenges:ccf}.
+  The Transaction Handler stores every signature transaction in an append-only ledger that is redundant in every other node and the persistent storage. Performing the application logic inside a TEE is fundamental for the confidentiality and the integrity, replicating the transactions is necessary for the high availability. The ledger is stored outside the TEE what leads to problems that are discussed in~\ref{challenges:ccf}.
 \begin{figure}[t]
 	\includegraphics[scale=0.14]{pictures/ccf}
 	\caption{Each node consists of a TEE, the untrusted host, and an interface between the host and the TEE. The TEE consists of a Key-value store, the Consensus, the Transaction Handler and the specific Application logic.The storage and the network are placed outside the TEE.}
 	\label{ccf}
 \end{figure}
-\subsection{Nimble}
+\subsection{Nimble in a nutshell?}
 Nimble also tries to ensure the requirement of the CIA triad, but has the focus of preventing rollback attacks.
 Nimble has three important goals, (1) ensure linearizability, (2) having a small Trusted Computing Base (TCB) and (3) to guarantee liveness of the cloud service. Therefore the authors differ between two main properties:
 \begin{itemize}

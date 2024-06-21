@@ -1,4 +1,5 @@
 \section{Challenges}
 \label{challenges:ccf}
 As mentioned before CCF does not have a rollback detection, because it allows rollback attacks to happen, because it is not affecting the system. The problems are that they (1) make the assumption that the code inside the TEE cannot be changed and (2) that they put their ledger into the persistent storage outside the TEEs and  it is therefore not protected for a rollback attack.\\
-Solutions for these challenges exist in Nimble. 
+Solutions for these challenges exist in Nimble.\\
+Another challenge is the TCB. If both systems are compared, CCF contains of about 55.5 thousand lines of code in the TEE, while Nimble has only 2.3 thousand. With a bigger TCB, the code inside the TEE gets more vulnerable.

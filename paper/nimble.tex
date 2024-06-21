@@ -8,10 +8,17 @@ To protect rollback attacks they firstly must be detected. Therefore Nimble pres
 \end{itemize}
 
 \section{Discussion}
-In this section two other components of CCF and Nimble are discussed. At first, reconfiguration is described, then I will talk about the disaster recovery protocol of both services.
+In this section two components of CCF and Nimble are discussed. At first, reconfiguration is described, then I will talk about the disaster recovery protocol of both services.
 \subsection{Reconfiguration}
 \label{reconNimble}
 %TODO graphic of node states and transactions
-Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee the high availability. CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For Reconfiguration a node must request an election and win it. The election is done by a majority quorum. 
-\subsection{Desaster Recovery Protocol}
+Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee the high availability.\\
+CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For Reconfiguration a node must request an election and win it. The election is done by a majority quorum. Since a reconfiguration is handled as a transaction, it can also be rolled back. In contrast to Nimble CCF does not detect or protect such an attack on a reconfiguration.\\%TODO: write more
+In Nimble it is possible to apply new endorsers. This is also mandatory for the high availability of Nimble. It guarantees both safety and liveness as long as there is a majority of endorsers working. Therefore it is important to add new endorsers if some of them fail, because if a majority fails and no new ones are added, Nimble has to give up its liveness. Nimble has also the challenge to implement the reconfiguration so that the TCB does not get much bigger, which solutions for the most systems like in CCF do. There nodes store their identity in each other node with the help of the state replication. This is not possible in Nimble. Therefore each set of working endorsers is stored as a configuration and new endorsers are stored in a new configuration. As a prerequisite for changing the configuration, a majority of endorsers in the previous configuration has called their finalize method and are finished. The identity of a new endorser is created by nimble in the new configuration. The change of the reconfiguration is leaded by a coordinator in three phases where it (1) finalizes existing. endorsers, (2) initializes new endorsers and (3) activates these new endorsers. While the endorsers can be trusted, the coordinators cannot. 
+
+\subsection{Disaster Recovery}
+In a disaster scenario, a majority of nodes failed and the system has to handle this.\\
+CCF has a disaster recovery protocol, in which the service is started with an older state. Therefore it cannot be guaranteed to be complete. If not all transactions are stored at the ledger before the disaster, it cannot be restored. 
+
+
 %\subsection{TCB}
