@@ -2,6 +2,7 @@
 \settopmatter{printacmref=false}
 \renewcommand\footnotetextcopyrightpermission[1]{}
 \usepackage{graphicx}
+\usepackage{titlesec}
 \bibliographystyle{plain}
 \title{Confidential Cloud Services}
 \author{Neele Peter}
@@ -12,23 +13,23 @@
 \makeatletter
 \let\@authorsaddresses\@empty
 \makeatother
-\pagestyle{empty}
+%\pagestyle{empty}
 \settopmatter{printacmref=false}
 \begin{document}
-	
+\acmConference[FAU]{Confidential Cloud Services}{July 2024}{Erlangen, Germany}
+\titleformat*{\subsubsection}{\large\bfseries}	
 	
 \maketitle
 
 %Abstract	
 \input{abstract}
-TODO
 
 \input{introduction}	
 
 \input{background}
 
-\begin{figure}[t]
-	\includegraphics[scale=0.25]{pictures/cia_triad}
+\begin{figure}[b]
+	\includegraphics[scale=0.1]{pictures/cia_triad}
 	\caption{Graphic of the CIA triad}
 	\label{cia}
 \end{figure}
@@ -36,6 +37,12 @@ TODO
 \input{ccf}
 
 \input{nimble}
+
+\begin{figure}[t]
+	\includegraphics[scale=0.12]{pictures/nimble}
+	\caption{Each node consists of a TEE. Inside the TEE there is the Endorser that saves the tail of the ledger.}
+	\label{nimble}
+\end{figure}
 
 %\input{relatedwork}
 

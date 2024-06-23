@@ -1,24 +1,9 @@
 \section{Rollback Protection}
-
-To protect rollback attacks they firstly must be detected. Therefore Nimble presents three categories that all detect a rollback attack:
-\begin{itemize}
-	\item \textbf{Addressing stale responses:} Stale responses happen when old data is given by the host although there is already newer data. Therefore Nimble uses an linearizable append-only ledger. Linearizability is a criteria that provides strong consistency. 
-	\item \textbf{Addressing synthesized requests:} Synthesized requests means that the provider sends requests that are not sent by the application and stores them. This is handled via signing. The application signs the state and then appends it on the ledger. When the application reads a state from the ledger it then can recognize whether it is a real state with a signature or a synthesized request from a malicious provider.
-	\item \textbf{Addressing replay:} When a provider applies older requests to the storage this is called replay. Therefore the position of the stored state in the ledger is also stored with a signature. So the application can check, if this signed position matches with the position it is currently stored in the ledger.
-\end{itemize}
-
-\section{Discussion}
-In this section two components of CCF and Nimble are discussed. At first, reconfiguration is described, then I will talk about the disaster recovery protocol of both services.
-\subsection{Reconfiguration}
-\label{reconNimble}
-%TODO graphic of node states and transactions
-Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee the high availability.\\
-CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For Reconfiguration a node must request an election and win it. The election is done by a majority quorum. Since a reconfiguration is handled as a transaction, it can also be rolled back. In contrast to Nimble CCF does not detect or protect such an attack on a reconfiguration.\\%TODO: write more
-In Nimble it is possible to apply new endorsers. This is also mandatory for the high availability of Nimble. It guarantees both safety and liveness as long as there is a majority of endorsers working. Therefore it is important to add new endorsers if some of them fail, because if a majority fails and no new ones are added, Nimble has to give up its liveness. Nimble has also the challenge to implement the reconfiguration so that the TCB does not get much bigger, which solutions for the most systems like in CCF do. There nodes store their identity in each other node with the help of the state replication. This is not possible in Nimble. Therefore each set of working endorsers is stored as a configuration and new endorsers are stored in a new configuration. As a prerequisite for changing the configuration, a majority of endorsers in the previous configuration has called their finalize method and are finished. The identity of a new endorser is created by nimble in the new configuration. The change of the reconfiguration is leaded by a coordinator in three phases where it (1) finalizes existing. endorsers, (2) initializes new endorsers and (3) activates these new endorsers. While the endorsers can be trusted, the coordinators cannot. 
-
-\subsection{Disaster Recovery}
-In a disaster scenario, a majority of nodes failed and the system has to handle this.\\
-CCF has a disaster recovery protocol, in which the service is started with an older state. Therefore it cannot be guaranteed to be complete. If not all transactions are stored at the ledger before the disaster, it cannot be restored. 
-
-
+As mentioned before, CCF only provides rollback protection for its nodes. They cannot be rolled back, because a node can never restart in CCF, but has to enter as a complete new node. That means, a node can possibly be killed, but never cause a rollback attack on the system. In contrast, the ledger can be rolled back, because it is stored in the persistent storage outside the Trusted Execution Environment and CCF does not provide an additional mechanism to detect rollback attacks. This makes CCF vulnerable and a risk for application with high requirements of security.\\
+ Nimble, on the other hand, has an extended protection against these attacks. To protect rollback attacks they firstly must be detected. Therefore Nimble presents three categories of rollback attacks:
+	\subsubsection*{Stale responses:} Stale responses happen when old data is given by the host although there is already newer data. Therefore Nimble uses an linearizable append-only ledger. Linearizability is a criteria that provides strong consistency and is realized via the endorsers.\\
+	 Remember that an endorser only stores the tail of the ledger, so if data is read from the ledger it can be compared with the endorser. In case it is not the same, a rollback attack did happen or the system failed before the endorser could store the tail of the hash chain. Accordingly, the ledger cannot be rolled back, because the state is provided by the endorser, which does not have a previous state to roll back to. 
+	\subsubsection*{Synthesized requests:} Synthesized requests means that the provider sends requests that are not sent by the application and stores them. This is handled via signing. The application signs the state and then appends it on the ledger. When the application reads a state from the ledger it then can recognize whether it is a real state with a signature or a synthesized request from a malicious provider.
+	\subsubsection*{Replay:} When a provider applies older requests to the storage this is called replay. Therefore the position of the stored state in the ledger is also stored with a signature. So the application can check, if this signed position matches with the position it is currently stored in the ledger.\\
+	
 %\subsection{TCB}
