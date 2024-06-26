@@ -1,6 +1,12 @@
 \section{Confidential Services}
 In this section, I present two Confidential Cloud Services. The first one is the Confidential Consortium Framework (CCF)~\cite{Howard} and the second one is Nimble~\cite{Nimble}. They both provide a structure to guarantee the CIA properties, but have some differences in their design, especially when it comes to rollback attacks. Nimble is specialized in detecting rollback attacks while CCF is a whole framework that can also be used for multiparty applications.
 
+ \begin{figure}[t]
+	\includegraphics[scale=0.14]{pictures/ccf}
+	\caption{The untrusted host consists of the network,  the storage and multiple TEEs (in this figure only one TEE is shown as the inner green box) that can communicate with the outside via an interface. Inside of each TEE that refers to one node in CCF, there is the Transaction Handler, the simple Key-Value Store, the individual Application Logic and the Consensus.}
+	\label{ccf}
+\end{figure}
+
 \subsection{CCF in a nutshell}
 The basic idea of CCF is that an untrusted host exists and one or more untrusted users can access the application via different replicated nodes that are responsible for the remaining communication. Providers only need to implement the application logic and make sure to have all necessary endpoints, so that CCF can handle these. Users then only have to access the specific endpoints to use the application. As CCF is especially implemented for multiparty applications, it has a multiparty governance to guarantee confidentiality and integrity. Details are elsewhere, but it consists of a constitution with proposals and ballots that can be individually customized by the application. In Figure~\ref{ccf} the structure of one node is described. The application logic gets the data from the Key-value-store which gets the data from the Consensus which is an explicit layer that is responsible for coordinating CCF in tasks like replicating nodes or making election decisions.
   The Transaction Handler stores every signature transaction in an append-only ledger that is redundantly stored by one of the nodes that is called primary noce in every other node and the persistent storage. Performing the application logic inside a TEE is fundamental for confidentiality and integrity, and replicating the transactions is necessary for high availability.\\ %The ledger is stored outside the TEE which leads to problems that are discussed in~\ref{challenges:ccf}.
@@ -9,12 +15,7 @@ While the primary is responsible for handling the users' requests, the remaining
  User requests are handled as transactions, that have a unique transaction ID. The primary also periodically sends signature transactions that verify all previous transactions as committed. To commit these signature transactions, the primary has to copy it onto at least $\lceil\frac{n-1}{2}\rceil$ nodes, where $n$ is the number of all nodes, to commit it.\\
   Signature transactions can also confirm that there were no malicious changes to the code and thus guarantee the integrity of CCF via merkle proof~\cite{merkle}. Transactions are provided via a merkle tree, where each transaction is represented as a hash value. Every two nodes in the merkle tree are combined with a hash function to a new node. On top of the merkle tree is the merkle root, which is the value that is used for the signature transaction. This process is also shown in Figure~\ref{merkle}.\\
   
-  \begin{figure}[t]
-	\includegraphics[scale=0.14]{pictures/ccf}
-	\caption{The untrusted host consists of the network,  the storage and multiple TEEs (in this figure only one TEE is shown as the inner green box) that can communicate with the outside via an interface. Inside of each TEE that refers to one node in CCF, there is the Transaction Handler, the simple Key-Value Store, the individual Application Logic and the Consensus.}
-	\label{ccf}
-\end{figure}
-  
+   
   \subsubsection*{Reconfiguration.}
   Reconfiguration is the procedure when a node fails and is replaced by a new one. This is an important feature to guarantee high availability.\\
 CCF therefore allows to add new or delete old nodes. Reconfiguration is implemented as a transaction. For reconfiguration, a node must request an election and win it. The election is done by a majority quorum. Since a reconfiguration is handled as a transaction, it can also be rolled back. In contrast to Nimble CCF does not detect or protect such an attack on a reconfiguration.\\%TODO: write more
@@ -45,4 +46,3 @@ Nimble has three important goals, (1) to ensure linearizability, (2) to have a s
 	\caption{Each node consists of a TEE. Inside the TEE there is the Endorser that saves the tail of the ledger.}
 	\label{nimble}
 \end{figure}
-
