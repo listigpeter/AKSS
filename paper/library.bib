@@ -17,23 +17,14 @@
 }
 
 @Article{Rollback,
-  author     = {Csikor, Levente and Lim, Hoon Wei and Wong, Jun Wen and Ramesh, Soundarya and Parameswarath, Rohini Poolat and Chan, Mun Choon},
-  journal    = {ACM Trans. Cyber-Phys. Syst.},
-  title      = {RollBack: A New Time-Agnostic Replay Attack Against the Automotive Remote Keyless Entry Systems},
-  year       = {2024},
-  issn       = {2378-962X},
-  month      = {jan},
-  number     = {1},
-  volume     = {8},
-  abstract   = {Automotive Keyless Entry (RKE) systems provide car owners with a degree of convenience, allowing them to lock and unlock their car without using a mechanical key. Today’s RKE systems implement disposable rolling codes, making every key fob button press unique, effectively preventing simple replay attacks. However, a prior attack called RollJam was proven to break all rolling code–based systems in general. By a careful sequence of signal jamming, capturing, and replaying, an attacker can become aware of the subsequent valid unlock signal that has not been used yet. RollJam, however, requires continuous deployment indefinitely until it is exploited. Otherwise, the captured signals become invalid if the key fob is used again without RollJam in place.We introduce RollBack, a new replay-and-resynchronize attack against most of today’s RKE systems. In particular, we show that even though the one-time code becomes invalid in rolling code systems, replaying a few previously captured signals consecutively can trigger a rollback-like mechanism in the RKE system. Put differently, the rolling codes become resynchronized back to a previous code used in the past from where all subsequent yet already used signals work again. Moreover, the victim can still use the key fob without noticing any difference before and after the attack.Unlike RollJam, RollBack does not necessitate jamming at all. In fact, it requires signal capturing only once and can be exploited at any time in the future as many times as desired. This time-agnostic property is particularly attractive to attackers, especially in car-sharing/renting scenarios in which accessing the key fob is straightforward. However, while RollJam defeats virtually any rolling code–based system, vehicles might have additional anti-theft measures against malfunctioning key fobs, hence against RollBack. Our ongoing analysis (with crowd-sourced data) against different vehicle makes and models has revealed that ∼ 50\% of the examined vehicles in the Asian region are vulnerable to RollBack, whereas the impact tends to be smaller in other regions, such as Europe and North America.},
-  address    = {New York, NY, USA},
-  articleno  = {5},
-  doi        = {10.1145/3627827},
-  issue_date = {January 2024},
-  keywords   = {resynchronization, RollBack, RollJam, replay attack, vulnerability, rolling code, Remote Keyless Entry},
-  numpages   = {25},
-  publisher  = {Association for Computing Machinery},
-  url        = {https://doi.org/10.1145/3627827},
+  author   = {Csikor, Levente and Lim, Hoon Wei and Wong, Jun Wen and Ramesh, Soundarya and Parameswarath, Rohini Poolat and Chan, Mun Choon},
+  journal  = {ACM Trans. Cyber-Phys. Syst.},
+  title    = {RollBack: A New Time-Agnostic Replay Attack Against the Automotive Remote Keyless Entry Systems},
+  year     = {2024},
+  abstract = {Automotive Keyless Entry (RKE) systems provide car owners with a degree of convenience, allowing them to lock and unlock their car without using a mechanical key. Today’s RKE systems implement disposable rolling codes, making every key fob button press unique, effectively preventing simple replay attacks. However, a prior attack called RollJam was proven to break all rolling code–based systems in general. By a careful sequence of signal jamming, capturing, and replaying, an attacker can become aware of the subsequent valid unlock signal that has not been used yet. RollJam, however, requires continuous deployment indefinitely until it is exploited. Otherwise, the captured signals become invalid if the key fob is used again without RollJam in place.We introduce RollBack, a new replay-and-resynchronize attack against most of today’s RKE systems. In particular, we show that even though the one-time code becomes invalid in rolling code systems, replaying a few previously captured signals consecutively can trigger a rollback-like mechanism in the RKE system. Put differently, the rolling codes become resynchronized back to a previous code used in the past from where all subsequent yet already used signals work again. Moreover, the victim can still use the key fob without noticing any difference before and after the attack.Unlike RollJam, RollBack does not necessitate jamming at all. In fact, it requires signal capturing only once and can be exploited at any time in the future as many times as desired. This time-agnostic property is particularly attractive to attackers, especially in car-sharing/renting scenarios in which accessing the key fob is straightforward. However, while RollJam defeats virtually any rolling code–based system, vehicles might have additional anti-theft measures against malfunctioning key fobs, hence against RollBack. Our ongoing analysis (with crowd-sourced data) against different vehicle makes and models has revealed that ∼ 50\% of the examined vehicles in the Asian region are vulnerable to RollBack, whereas the impact tends to be smaller in other regions, such as Europe and North America.},
+  doi      = {10.1145/3627827},
+  keywords = {resynchronization, RollBack, RollJam, replay attack, vulnerability, rolling code, Remote Keyless Entry},
+  url      = {https://doi.org/10.1145/3627827},
 }
 
 @InProceedings{TrustedComputing,
@@ -108,26 +99,21 @@
 }
 
 @InProceedings{sideChannel,
-  author       = {Bukasa, Sebanjila Kevin and Lashermes, Ronan and Le Bouder, H{\'e}l{\`e}ne and Lanet, Jean-Louis and Legay, Axel},
-  booktitle    = {Information Security Theory and Practice: 11th IFIP WG 11.2 International Conference, WISTP 2017, Heraklion, Crete, Greece, September 28--29, 2017, Proceedings 11},
-  title        = {How TrustZone could be bypassed: Side-channel attacks on a modern system-on-chip},
-  year         = {2018},
-  organization = {Springer},
-  pages        = {93--109},
+  author    = {Bukasa, Sebanjila Kevin and Lashermes, Ronan and Le Bouder, H{\'e}l{\`e}ne and Lanet, Jean-Louis and Legay, Axel},
+  booktitle = {Information Security Theory and Practice: 11th IFIP WG 11.2 International Conference, WISTP 2017, Heraklion, Crete, Greece, September 28--29, 2017, Proceedings 11},
+  title     = {How TrustZone could be bypassed: Side-channel attacks on a modern system-on-chip},
+  year      = {2018},
+  pages     = {93--109},
 }
 
 @Article{remoteAttestation,
-  author     = {Alexander Sprog{\o} Banks and Marek Kisiel and Philip Korsholm},
-  journal    = {CoRR},
-  title      = {Remote Attestation: {A} Literature Review},
-  year       = {2021},
-  volume     = {abs/2105.02466},
-  bibsource  = {dblp computer science bibliography, https://dblp.org},
-  biburl     = {https://dblp.org/rec/journals/corr/abs-2105-02466.bib},
-  eprint     = {2105.02466},
-  eprinttype = {arXiv},
-  timestamp  = {Wed, 12 May 2021 15:54:31 +0200},
-  url        = {https://arxiv.org/abs/2105.02466},
+  author    = {Alexander Sprog{\o} Banks and Marek Kisiel and Philip Korsholm},
+  journal   = {CoRR},
+  title     = {Remote Attestation: {A} Literature Review},
+  year      = {2021},
+  eprint    = {2105.02466},
+  timestamp = {Wed, 12 May 2021 15:54:31 +0200},
+  url       = {https://arxiv.org/abs/2105.02466},
 }
 
 @Misc{sgx,
@@ -145,16 +131,13 @@
   title   = {Strengthening VM isolation with integrity protection and more},
   year    = {2020},
   pages   = {1450--1465},
-  volume  = {53},
 }
 
 @Misc{merkle,
-  author        = {Lum Ramabaja and Arber Avdullahu},
-  title         = {Compact Merkle Multiproofs},
-  year          = {2020},
-  archiveprefix = {arXiv},
-  eprint        = {2002.07648},
-  primaryclass  = {id='cs.CR' full_name='Cryptography and Security' is_active=True alt_name=None in_archive='cs' is_general=False description='Covers all areas of cryptography and security including authentication, public key cryptosytems, proof-carrying code, etc. Roughly includes material in ACM Subject Classes D.4.6 and E.3.'},
+  author = {Lum Ramabaja and Arber Avdullahu},
+  title  = {Compact Merkle Multiproofs},
+  year   = {2020},
+  eprint = {2002.07648},
 }
 
 @Article{ledger,
@@ -162,8 +145,6 @@
   journal = {Overview report The British Standards Institution (BSI)},
   title   = {Distributed Ledger Technologies/Blockchain: Challenges, opportunities and the prospects for standards},
   year    = {2017},
-  pages   = {40},
-  volume  = {40},
 }
 
 @InProceedings{rote,
@@ -183,12 +164,11 @@
 }
 
 @InProceedings{lcm,
-  author       = {Brandenburger, Marcus and Cachin, Christian and Lorenz, Matthias and Kapitza, R{\"u}diger},
-  booktitle    = {2017 47th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)},
-  title        = {Rollback and forking detection for trusted execution environments using lightweight collective memory},
-  year         = {2017},
-  organization = {IEEE},
-  pages        = {157--168},
+  author    = {Brandenburger, Marcus and Cachin, Christian and Lorenz, Matthias and Kapitza, R{\"u}diger},
+  booktitle = {2017 47th Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN)},
+  title     = {Rollback and forking detection for trusted execution environments using lightweight collective memory},
+  year      = {2017},
+  pages     = {157--168},
 }
 
 @Article{rolljam,
@@ -196,10 +176,6 @@
   journal    = {ACM Trans. Cyber-Phys. Syst.},
   title      = {RollBack: A New Time-Agnostic Replay Attack Against the Automotive Remote Keyless Entry Systems},
   year       = {2024},
-  issn       = {2378-962X},
-  month      = {jan},
-  number     = {1},
-  volume     = {8},
   abstract   = {Automotive Keyless Entry (RKE) systems provide car owners with a degree of convenience, allowing them to lock and unlock their car without using a mechanical key. Today’s RKE systems implement disposable rolling codes, making every key fob button press unique, effectively preventing simple replay attacks. However, a prior attack called RollJam was proven to break all rolling code–based systems in general. By a careful sequence of signal jamming, capturing, and replaying, an attacker can become aware of the subsequent valid unlock signal that has not been used yet. RollJam, however, requires continuous deployment indefinitely until it is exploited. Otherwise, the captured signals become invalid if the key fob is used again without RollJam in place.We introduce RollBack, a new replay-and-resynchronize attack against most of today’s RKE systems. In particular, we show that even though the one-time code becomes invalid in rolling code systems, replaying a few previously captured signals consecutively can trigger a rollback-like mechanism in the RKE system. Put differently, the rolling codes become resynchronized back to a previous code used in the past from where all subsequent yet already used signals work again. Moreover, the victim can still use the key fob without noticing any difference before and after the attack.Unlike RollJam, RollBack does not necessitate jamming at all. In fact, it requires signal capturing only once and can be exploited at any time in the future as many times as desired. This time-agnostic property is particularly attractive to attackers, especially in car-sharing/renting scenarios in which accessing the key fob is straightforward. However, while RollJam defeats virtually any rolling code–based system, vehicles might have additional anti-theft measures against malfunctioning key fobs, hence against RollBack. Our ongoing analysis (with crowd-sourced data) against different vehicle makes and models has revealed that ∼ 50\% of the examined vehicles in the Asian region are vulnerable to RollBack, whereas the impact tends to be smaller in other regions, such as Europe and North America.},
   address    = {New York, NY, USA},
   articleno  = {5},
@@ -209,6 +185,21 @@
   numpages   = {25},
   publisher  = {Association for Computing Machinery},
   url        = {https://doi.org/10.1145/3627827},
+}
+
+@InProceedings{tee_insec,
+  author    = {Van Bulck, Jo and Oswald, David and Marin, Eduard and Aldoseri, Abdulla and Garcia, Flavio D. and Piessens, Frank},
+  booktitle = {Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security},
+  title     = {A Tale of Two Worlds: Assessing the Vulnerability of Enclave Shielding Runtimes},
+  year      = {2019},
+  pages     = {1741–1758},
+  abstract  = {This paper analyzes the vulnerability space arising in Trusted Execution Environments (TEEs) when interfacing a trusted enclave application with untrusted, potentially malicious code. Considerable research and industry effort has gone into developing TEE runtime libraries with the purpose of transparently shielding enclave application code from an adversarial environment. However, our analysis reveals that shielding requirements are generally not well-understood in real-world TEE runtime implementations. We expose several sanitization vulnerabilities at the level of the Application Binary Interface (ABI) and the Application Programming Interface (API) that can lead to exploitable memory safety and side-channel vulnerabilities in the compiled enclave. Mitigation of these vulnerabilities is not as simple as ensuring that pointers are outside enclave memory. In fact, we demonstrate that state-of-the-art mitigation techniques such as Intel's edger8r, Microsoft's "deep copy marshalling", or even memory-safe languages like Rust fail to fully eliminate this attack surface. Our analysis reveals 35 enclave interface sanitization vulnerabilities in 8 major open-source shielding frameworks for Intel SGX, RISC-V, and Sancus TEEs. We practically exploit these vulnerabilities in several attack scenarios to leak secret keys from the enclave or enable remote code reuse. We have responsibly disclosed our findings, leading to 5 designated CVE records and numerous security patches in the vulnerable open-source projects, including the Intel SGX-SDK, Microsoft Open Enclave, Google Asylo, and the Rust compiler.},
+  doi       = {10.1145/3319535.3363206},
+  isbn      = {9781450367479},
+  keywords  = {trusted execution, tee, side-channels, memory safety, intel sgx},
+  location  = {London, United Kingdom},
+  numpages  = {18},
+  url       = {https://doi.org/10.1145/3319535.3363206},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
